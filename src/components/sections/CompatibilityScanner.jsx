@@ -11,11 +11,11 @@ const CompatibilityScanner = ({ compatibility }) => {
   return (
     <div className="flex-1 bg-white border border-brand-dark/5 rounded-3xl p-10 flex flex-col justify-between shadow-xl relative overflow-hidden group/scanner min-h-[220px]">
       
-      {/* 背景扫描线 */}
+      {/* Background scan lines */}
       <div className="absolute top-0 w-[4px] h-full bg-gradient-to-b from-transparent via-brand-red/80 to-transparent animate-scanner shadow-[0_0_25px_rgba(255,0,0,0.6)] rounded-full z-20"></div>
 
       <div className="relative z-10 mb-6">
-        {/* 复用刚才创建的基础 UI 组件 */}
+        {/* Reusing the basic UI component */}
         <SectionLabel text="System_Compatibility" />
       </div>
 

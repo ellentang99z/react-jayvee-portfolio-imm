@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import SectionLabel from "./components/ui/SectionLabel";
-import Tag from "./components/ui/Tag";
 import ActionLink from "./components/ui/ActionLink";
 import ProjectCard from "./components/cards/ProjectCard";
 import CompatibilityScanner from "./components/sections/CompatibilityScanner";
@@ -55,7 +54,7 @@ function App() {
 
   return (
     <div className="h-screen w-full flex flex-col md:flex-row tracking-tight bg-brand-shell overflow-hidden">
-      {/* 移动端顶部状态栏 */}
+      {/* Mobile top status bar */}
       <div className="md:hidden flex items-center justify-between p-6 bg-[#F2EDE7] border-b border-brand-dark/10 z-30 shrink-0">
         <div className="font-display text-2xl font-black text-brand-red uppercase">
           LOGO
@@ -77,7 +76,7 @@ function App() {
         </button>
       </div>
 
-      {/* 移动端遮罩层 */}
+      {/* Mobile overlay */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm z-40 md:hidden"
@@ -85,7 +84,7 @@ function App() {
         />
       )}
 
-      {/* 左侧导航栏 / 移动端抽屉 */}
+      {/* Left navigation bar / Mobile app drawer */}
       <div
         className={`fixed md:relative top-0 left-0 h-full w-[300px] md:w-[340px] flex flex-col gap-4 shrink-0 p-8 border-r-2 border-brand-dark/10 bg-[#F2EDE7] shadow-2xl md:shadow-[10px_0_40px_-20px_rgba(0,0,0,0.1)] z-50 transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
@@ -295,7 +294,7 @@ function ProjectContent({ subPage, onSelectProject }) {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error("获取数据库失败:", err);
+        console.error("Failed to retrieve database:", err);
         setIsLoading(false);
       });
   }, []);
@@ -326,7 +325,7 @@ function ProjectContent({ subPage, onSelectProject }) {
             className="mb-3 underline underline-offset-4 decoration-brand-red/30 block"
           />
 
-          {/* 使用 body-text 类名，解决全大写难读的问题 */}
+          
           <p className="body-text">{expertiseDesc}</p>
         </div>
       </div>
@@ -337,7 +336,7 @@ function ProjectContent({ subPage, onSelectProject }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1">
-          {/* 这里瞬间清爽了，直接调用 ProjectCard */}
+          {/* Directly call ProjectCard */}
           {displayProjects.map((project) => (
             <ProjectCard
               key={project._id}
@@ -366,7 +365,7 @@ function ProjectDetail({ project, onBack }) {
       className="h-full overflow-y-auto no-scrollbar animate-fade-in text-brand-dark"
     >
       <div className="p-10 md:p-14 lg:p-20 max-w-6xl mx-auto w-full flex flex-col gap-24 pb-40">
-        {/* 01. 顶部导航与返回按钮 */}
+        {/* 01. Top navigation and back button */}
         <div className="shrink-0 flex justify-between items-center">
           <button
             onClick={onBack}
@@ -387,7 +386,7 @@ function ProjectDetail({ project, onBack }) {
           <SectionLabel text="Project_Case_Study_2026" className="opacity-30" />
         </div>
 
-        {/* 02. 项目英雄头部 */}
+        {/* 02. Project Hero Header */}
         <div className="flex flex-col lg:flex-row justify-between items-end gap-12 border-b border-brand-dark/10 pb-12">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-6">
@@ -412,14 +411,14 @@ function ProjectDetail({ project, onBack }) {
           </div>
         </div>
 
-        {/* Intro 模块容器 */}
+        {/* Intro Module container*/}
         <div className="pt-2">
           <div className="w-full font-sans text-lg md:text-xl leading-relaxed text-gray-800 text-justify">
             <p>{project.description}</p>
           </div>
         </div>
 
-        {/* 03. 核心元数据网格：动态读取项目数据 */}
+        {/* 03. Core Metadata Grid: Dynamically Read Project Data */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-white/40 p-10 rounded-3xl border border-brand-dark/5 backdrop-blur-md shadow-inner">
           {[
             { label: "My Role", value: project.role || "Lead Designer" },
@@ -448,11 +447,11 @@ function ProjectDetail({ project, onBack }) {
                 rel="noopener noreferrer"
                 className="w-full bg-brand-dark text-white py-5 rounded-2xl font-display font-bold text-[10px] uppercase tracking-widest hover:bg-brand-red transition-all shadow-xl hover:-translate-y-1 text-center block"
               >
-                {/* 根据 isPresentation 字段显示不同文字 */}
+                {/* Display different text based on the isPresentation field. */}
                 {project.isPresentation ? "View Presentation" : "Live Site"}
               </a>
             ) : (
-              // 如果没有 liveSiteUrl，可以显示一个置灰的按钮或者干脆不渲染
+            
               <div className="w-full bg-gray-300 text-gray-500 py-5 rounded-2xl font-display font-bold text-[10px] uppercase tracking-widest text-center">
                 Coming Soon
               </div>
@@ -460,7 +459,7 @@ function ProjectDetail({ project, onBack }) {
           </div>
         </div>
 
-        {/* 04. 挑战板块 */}
+        {/* 04. Challenge Section */}
         <section className="flex flex-col lg:flex-row gap-20">
           <div className="w-full lg:w-1/3 shrink-0">
             <h3 className="font-display font-black text-4xl uppercase tracking-tighter mb-8 flex items-baseline gap-4">
@@ -492,10 +491,10 @@ function ProjectDetail({ project, onBack }) {
           </div>
         </section>
 
-        {/* 05. 视觉系统展示 (使用刚封装好的组件) */}
+        {/* 05. Visual System Showcase */}
         <VisualSystemShowcase image={project.visualSystemImage} />
 
-        {/* 06. 核心功能区块 */}
+        {/* 06. Core Features Block */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           <div className="lg:col-span-2 bg-white rounded-3xl border border-brand-dark/5 shadow-xl p-12 flex flex-col relative group overflow-hidden">
             <div className="flex justify-between items-start relative z-10 mb-12">
@@ -559,12 +558,12 @@ function ProjectDetail({ project, onBack }) {
               </p>
             </div>
 
-            {/* 极简扫描动效组件 */}
+            {/* Minimalist scanning animation components */}
             <CompatibilityScanner compatibility={project.compatibility} />
           </div>
         </section>
 
-        {/* 08. 结尾与下一项目引导 */}
+        {/* 08. Ending and Guide to the Next Project */}
         <footer className="pt-24 border-t border-brand-dark/10 flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="flex flex-col items-center md:items-start gap-4">
             <SectionLabel text="End of Record // 2026" className="opacity-30" />

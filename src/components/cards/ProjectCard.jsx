@@ -4,10 +4,10 @@ const ProjectCard = ({ project, onClick }) => {
   return (
     <div
       onClick={() => onClick(project)}
-      // 【关键修复】：把之前丢失的圆角(rounded-2xl)、内边距(p-10)、上下排布(flex-col justify-between)全加回来了！
+    
       className="bg-white border border-brand-dark/5 rounded-2xl p-10 h-72 flex flex-col justify-between group cursor-pointer hover:bg-brand-red transition-all duration-500 shadow-lg hover:-translate-y-2 text-brand-dark"
     >
-      {/* 顶部：编号与图标 */}
+      {/* Top: Numbers and Icons */}
       <div className="flex justify-between items-start">
         <span className="font-serif italic font-bold text-4xl group-hover:text-brand-shell transition-colors">
           {project.number}
@@ -26,7 +26,7 @@ const ProjectCard = ({ project, onClick }) => {
         </div>
       </div>
       
-      {/* 底部：标题与元数据 */}
+      {/* Bottom: Title and Metadata */}
       <div>
         <h3 className="text-2xl md:text-3xl font-display font-black tracking-tight uppercase group-hover:text-brand-shell transition-colors leading-none">
           {project.title}

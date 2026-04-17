@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-// 1. 更新数据库模型，加上你需要的这些新字段
+// 1. Update the database model, adding the new fields.
 const projectSchema = new mongoose.Schema({
   title: String,
   category: String,
@@ -28,7 +28,7 @@ const projectSchema = new mongoose.Schema({
 });
 const Project = mongoose.model("Project", projectSchema);
 
-// 2. 更新你的测试数据
+// 2. Update test data
 const myProjects = [
   {
     title: "CIPHER",
@@ -88,25 +88,25 @@ const myProjects03 = [
   },
 ];
 
-// 3. 连接数据库并注入数据
+// 3. Connect to the database and inject data
 mongoose
   .connect(process.env.MONGO_URI)
   .then(async () => {
-    console.log("✅ 数据库连接成功，准备清理旧数据...");
-    await Project.deleteMany({}); // 先清理
+    console.log("✅ Database connection successful, ready to clean up old data....");
+    await Project.deleteMany({});
 
-    console.log("🌱 开始播种新数据...");
+    console.log("🌱 Start seeding new data...");
 
     // 将两个数组合并后一起插入
     const allProjects = [...myProjects, ...myProjects03];
     await Project.insertMany(allProjects);
 
     console.log(
-      `🎉 播种大功告成！成功存入 ${allProjects.length} 个作品到云端！`,
+      `🎉 Seed completed successfully! ${allProjects.length} projects inserted into the cloud!`,
     );
     process.exit();
   })
   .catch((err) => {
-    console.log("❌ 播种失败:", err);
+    console.log("❌ Seed failed:", err);
     process.exit(1);
   });

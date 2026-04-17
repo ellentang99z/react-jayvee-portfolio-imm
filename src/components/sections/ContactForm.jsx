@@ -3,7 +3,7 @@ import SectionLabel from '../ui/SectionLabel';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle'); // 状态：idle, submitting, success, error
+  const [status, setStatus] = useState('idle'); // Status：idle, submitting, success, error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +24,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', message: '' }); // 清空表单
+        setFormData({ name: '', email: '', message: '' });
       } else {
         setStatus('error');
       }

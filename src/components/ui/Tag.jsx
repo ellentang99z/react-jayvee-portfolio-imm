@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Tag = ({ children, variant = "dark", className = "" }) => {
-  // 根据传入的 variant 决定背景颜色，默认是深色
+  // The background color is determined by the passed-in variant; the default is dark.
   const bgClass = variant === "red" ? "bg-brand-red" : "bg-brand-dark";
   
   return (
