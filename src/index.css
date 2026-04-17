@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #ebe6e0;
+    color: #1f1a1a;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cc3333;
+  border-radius: 10px;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 杂志感镂空字体 */
+.editorial-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.2px #cc3333;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+/* 卡片悬浮过渡 */
+.bento-card {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 扫描线从左向右循环滑动 */
+@keyframes scanner-sweep {
+  0% { left: -5%; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { left: 105%; opacity: 0; }
+}
+
+/* 激活状态的径向脉冲 */
+@keyframes ripple-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.animate-scanner {
+  animation: scanner-sweep 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-ripple {
+  animation: ripple-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
